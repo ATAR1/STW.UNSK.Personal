@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7791192b7eb647928f83cbd70dfdade5" Name="Diagram1" >
+        <EntityTypeShape EntityType="DbModel.DeputyPost" Width="1.5" PointX="7.375" PointY="3.5" />
+        <EntityTypeShape EntityType="DbModel.Person" Width="1.5" PointX="3.25" PointY="0.5" />
+        <EntityTypeShape EntityType="DbModel.Worker" Width="1.5" PointX="1.5" PointY="3.75" />
+        <EntityTypeShape EntityType="DbModel.Post" Width="1.5" PointX="7.375" PointY="0.625" />
+        <AssociationConnector Association="DbModel.FK_PersonPost" />
+        <InheritanceConnector EntityType="DbModel.Worker" />
+        <InheritanceConnector EntityType="DbModel.DeputyPost" />
+        <EntityTypeShape EntityType="DbModel.Engineer" Width="1.5" PointX="4.75" PointY="4" />
+        <InheritanceConnector EntityType="DbModel.Engineer" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4" PointY="3.0571907552083331" />
+          <ConnectorPoint PointX="4" PointY="3.385416666666667" />
+          <ConnectorPoint PointX="5.5" PointY="3.385416666666667" />
+          <ConnectorPoint PointX="5.5" PointY="4" />
+        </InheritanceConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

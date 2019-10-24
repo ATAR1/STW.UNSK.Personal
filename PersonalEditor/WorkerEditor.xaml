@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="PersonalEditor.WorkerEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:PersonalEditor="clr-namespace:PersonalEditor"
+             mc:Ignorable="d"  d:DesignWidth="300">
+    <ContentControl VerticalAlignment="Top" Content="{Binding}" Margin="5">
+        <ContentControl.Resources>
+            <DataTemplate DataType="{x:Type PersonalEditor:PersonEditorVM}" >
+                <PersonalEditor:PersonEditor />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type PersonalEditor:WorkerEditorVM}" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <PersonalEditor:PersonEditor />
+                    <PersonalEditor:WorkerEditorAddition Grid.Row="1" />
+                </Grid>
+            </DataTemplate>
+        </ContentControl.Resources>
+    </ContentControl>
+</UserControl>
