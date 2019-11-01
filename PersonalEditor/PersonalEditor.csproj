@@ -77,6 +77,8 @@
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="PersonEditorVM.cs" />
     <Compile Include="PersonEditorVMFactory.cs" />
+    <Compile Include="Repositories\IPersonalRepository.cs" />
+    <Compile Include="Repositories\PersonalEFRepository.cs" />
     <Compile Include="UNSK_PersonalDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
