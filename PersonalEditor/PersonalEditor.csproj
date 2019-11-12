@@ -63,6 +63,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AddEngineerCommand.cs" />
+    <Compile Include="Commands\LoadPersonalCommand.cs" />
     <Compile Include="Dialogs\AddPersonDialog.xaml.cs">
       <DependentUpon>AddPersonDialog.xaml</DependentUpon>
     </Compile>
@@ -181,6 +182,9 @@
       <Project>{ce6f0f57-f21f-4f52-942a-0867761cd8ad}</Project>
       <Name>STW.UNSK.Personal.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
