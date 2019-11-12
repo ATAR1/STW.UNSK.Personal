@@ -43,11 +43,7 @@ namespace PersonalEditor
                 {
                     Personal.Add(person);
                 }
-                var posts = _ctx.State.ToList();
-                foreach (var person in Personal)
-                {
-                    person.AvaliablePost = posts.ToList();
-                }
+                var posts = _ctx.State.ToList();                
             }
             catch(Exception e)
             {
