@@ -12,7 +12,6 @@ namespace STW.UNSK.Personal.Model
         public string ShortName => $"{Surname} {Name.First()}.{Patronymic.First()}.";
 
         public string InitialsFirst => $"{Name.First()}.{Patronymic.First()}. {Surname}";
-
-        public List<Post> AvaliablePost { get; set; }
+        
     }
 }
