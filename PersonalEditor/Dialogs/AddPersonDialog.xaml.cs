@@ -17,7 +17,7 @@ namespace PersonalEditor.Dialogs
     /// <summary>
     /// Логика взаимодействия для AddWorker.xaml
     /// </summary>
-    public partial class AddPersonDialog : Window
+    public partial class AddPersonDialog : Window,IAddPersonDialog
     {
         
         public AddPersonDialog(Person person,ICollection<Post> avaliablePosts )

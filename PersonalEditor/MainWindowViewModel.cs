@@ -1,4 +1,7 @@
 ﻿using PersonalEditor.Commands;
+using PersonalEditor.Dialogs;
+using PersonalEditor.PersonalFactories;
+using PersonalEditor.Repositories;
 using STW.UNSK.Personal.Model;
 using System;
 using System.Collections.Generic;
@@ -11,45 +14,47 @@ namespace PersonalEditor
 {
     public class MainWindowViewModel
     {
-        private Action listRefresh;
         private DbModelContainer _ctx;
 
         public MainWindowViewModel(Action listRefresh)
         {
             _ctx = new DbModelContainer();
-            Personal = new ObservableCollection<Person>();
-            AddEngineerCommand = new AddEngineerCommand(_ctx, Personal);
-            AddWorkerCommand = new AddWorkerCommand(_ctx, Personal);
+            Personal = new LocalPersonalCollection();
+            var personalEFRepository = new PersonalEFRepository(_ctx);
+            LoadPersonalCommand = new LoadPersonalCommand(personalEFRepository, Personal);
+            var postsEFRepository = new PostsEFRepository(_ctx);
+            AddEngineerCommand = new AddPersonCommand(new PersonFactoryWPF(new AddEngineerDialogFactory(postsEFRepository)), personalEFRepository, Personal);
+            AddWorkerCommand = new AddPersonCommand(new PersonFactoryWPF(new AddWorkerDialogFactory(postsEFRepository)), personalEFRepository, Personal);
             EditPersonCommand = new EditPersonCommand(_ctx,listRefresh);
-            this.listRefresh = listRefresh;          
+            LoadPersonalCommand.Execute();
         }
         
-
-        public AddEngineerCommand AddEngineerCommand { get; private set; }
-        public AddWorkerCommand AddWorkerCommand { get; private set; }
+        public LoadPersonalCommand LoadPersonalCommand { get; private set; }
+        public AddPersonCommand AddEngineerCommand { get; private set; }
+        public AddPersonCommand AddWorkerCommand { get; private set; }
         public EditPersonCommand EditPersonCommand { get; private set; }
 
-        public ObservableCollection<Person> Personal { get; set; }
+        public LocalPersonalCollection Personal { get; set; }
 
 
         public Person SelectedPerson { get; set; }       
 
-        public void LoadPersonal()
-        {
-            try
-            {
+        //public void LoadPersonal()
+        //{
+        //    try
+        //    {
 
-                foreach (var person in _ctx.Personal.ToList())
-                {
-                    Personal.Add(person);
-                }
-                var posts = _ctx.State.ToList();                
-            }
-            catch(Exception e)
-            {
-                throw new PersonalLoadingException("Ошибка загрузки списка персонала",e);
-            }
-        }
+        //        foreach (var person in _ctx.Personal.ToList())
+        //        {
+        //            Personal.Add(person);
+        //        }
+        //        var posts = _ctx.State.ToList();                
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        throw new PersonalLoadingException("Ошибка загрузки списка персонала",e);
+        //    }
+        //}
     }
 
     [Serializable]

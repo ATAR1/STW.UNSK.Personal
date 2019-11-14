@@ -29,7 +29,6 @@ namespace PersonalEditor
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _vm = new MainWindowViewModel(ListRefresh);
-            _vm.LoadPersonal();
             DataContext = _vm;
             
         }

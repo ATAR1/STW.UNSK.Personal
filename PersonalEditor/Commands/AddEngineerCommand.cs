@@ -1,4 +1,6 @@
 ﻿using PersonalEditor.Dialogs;
+using PersonalEditor.PersonalFactories;
+using PersonalEditor.Repositories;
 using STW.UNSK.Personal.Model;
 using System;
 using System.Collections.Generic;
@@ -9,15 +11,16 @@ using System.Windows.Input;
 
 namespace PersonalEditor.Commands
 {
-    public class AddEngineerCommand : ICommand
+    public class AddPersonCommand : ICommand
     {
-        private DbModelContainer _ctx;
-        private ObservableCollection<Person> _personal;
-
-        public AddEngineerCommand(DbModelContainer _ctx, ObservableCollection<Person> personal)
+        IPersonFactory _personFactory;
+        IPersonalRepository _personalRepository;
+        ILocalPersonalCollection _localPersonalCollection;
+        public AddPersonCommand(IPersonFactory personFactory, IPersonalRepository repository, ILocalPersonalCollection localPersonalCollection)
         {
-            this._ctx = _ctx;
-            this._personal = personal;
+            _personFactory = personFactory;
+            _personalRepository = repository;
+            _localPersonalCollection = localPersonalCollection;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -29,19 +32,14 @@ namespace PersonalEditor.Commands
 
         public void Execute(object parameter)
         {
-            List<Post> avaliablePosts = GetAvaliablePosts();
-            AddPersonDialog addWorkerDialog = new AddPersonDialog(new Engineer(), avaliablePosts);
-            if (addWorkerDialog.ShowDialog() == true)
+            Person person;
+            if(_personFactory.CreateInstanceResult(out person))
             {
-                var addedWorker = _ctx.Personal.Add(addWorkerDialog.Person);
-                _ctx.SaveChanges();
-                _personal.Add(addedWorker);
+                _personalRepository.AddPerson(person);
+                _localPersonalCollection.Add(person);
             }
-        }
 
-        private List<Post> GetAvaliablePosts()
-        {
-            return _ctx.State.Where(p => p.CategoryId == (int)PostCategory.Engineer).ToList();
+            
         }
     }
 }

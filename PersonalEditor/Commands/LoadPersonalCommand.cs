@@ -8,11 +8,22 @@ namespace PersonalEditor.Commands
 {
     public class LoadPersonalCommand
     {
-        private IPersonalRepository repository;
+        private ILocalPersonalCollection _personalCollection;
+        private IPersonalRepository _repository;
 
-        public LoadPersonalCommand(IPersonalRepository repository)
+        public LoadPersonalCommand(IPersonalRepository repository, ILocalPersonalCollection personalCollection)
         {
-            this.repository = repository;
+            this._repository = repository;
+            _personalCollection = personalCollection;
+        }
+
+        public void Execute()
+        {
+            foreach(var person in _repository.GetPersonal())
+            {
+                _personalCollection.Add(person);
+            }
+
         }
     }
 }

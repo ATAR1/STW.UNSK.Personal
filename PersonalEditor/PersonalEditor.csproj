@@ -63,11 +63,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AddEngineerCommand.cs" />
+    <Compile Include="Dialogs\AddEngineerDialogFactory.cs" />
+    <Compile Include="Dialogs\AddWorkerDialogFactory.cs" />
+    <Compile Include="Dialogs\IAddPersonDialog.cs" />
+    <Compile Include="Dialogs\IAddPersonDialogFactory.cs" />
+    <Compile Include="ILocalPersonalCollection.cs" />
+    <Compile Include="LocalPersonalCollection.cs" />
+    <Compile Include="PersonalFactories\PersonFactoryWPF.cs" />
+    <Compile Include="PersonalFactories\IPersonFactory.cs" />
     <Compile Include="Commands\LoadPersonalCommand.cs" />
     <Compile Include="Dialogs\AddPersonDialog.xaml.cs">
       <DependentUpon>AddPersonDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\AddWorkerCommand.cs" />
     <Compile Include="Add_ITR.xaml.cs">
       <DependentUpon>Add_ITR.xaml</DependentUpon>
     </Compile>
@@ -79,7 +86,9 @@
     <Compile Include="PersonEditorVM.cs" />
     <Compile Include="PersonEditorVMFactory.cs" />
     <Compile Include="Repositories\IPersonalRepository.cs" />
+    <Compile Include="Repositories\IPostsRepository.cs" />
     <Compile Include="Repositories\PersonalEFRepository.cs" />
+    <Compile Include="Repositories\PostsEFRepository.cs" />
     <Compile Include="UNSK_PersonalDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
