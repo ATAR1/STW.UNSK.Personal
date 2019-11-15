@@ -54,6 +54,7 @@
     <Compile Include="Engineer.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EngineerPartial.cs" />
     <Compile Include="PersonPartial.cs" />
     <Compile Include="DbModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -84,6 +85,7 @@
     <Compile Include="Worker.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="WorkerPartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

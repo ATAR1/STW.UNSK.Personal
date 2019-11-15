@@ -17,15 +17,17 @@ namespace PersonalEditor.Dialogs
     /// <summary>
     /// Логика взаимодействия для EditPersonDialog.xaml
     /// </summary>
-    public partial class EditPersonDialog : Window
+    public partial class EditPersonDialog : Window, IEditPersonDialog
     {
-        public EditPersonDialog(Person person, List<Post> avaliablePosts)
+        public EditPersonDialog(Person person, ICollection<Post> avaliablePosts)
         {
             InitializeComponent();
+            Person = person;
             PersonEditorVM PersonEditorVM = PersonEditorVMFactory.Generate(person, avaliablePosts);
             personEditor.DataContext = PersonEditorVM;
         }
 
+        public Person Person { get; }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;

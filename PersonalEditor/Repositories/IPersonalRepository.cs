@@ -10,7 +10,6 @@ namespace PersonalEditor.Repositories
     {
         ICollection<Person> GetPersonal();
         Person AddPerson(Person newPerson);
-        Person UpdatePerson(Person person);
-
+        Person Save(Person person);
     }
 }

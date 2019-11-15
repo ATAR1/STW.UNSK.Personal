@@ -62,11 +62,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\AddEngineerCommand.cs" />
+    <Compile Include="Commands\AddPersonCommand.cs" />
     <Compile Include="Dialogs\AddEngineerDialogFactory.cs" />
     <Compile Include="Dialogs\AddWorkerDialogFactory.cs" />
     <Compile Include="Dialogs\IAddPersonDialog.cs" />
     <Compile Include="Dialogs\IAddPersonDialogFactory.cs" />
+    <Compile Include="Dialogs\IEditPersonDialog.cs" />
     <Compile Include="ILocalPersonalCollection.cs" />
     <Compile Include="LocalPersonalCollection.cs" />
     <Compile Include="PersonalFactories\PersonFactoryWPF.cs" />

@@ -25,14 +25,16 @@ namespace PersonalEditor.Repositories
 
         public ICollection<Person> GetPersonal()
         {
-            return _ctx.Personal.AsNoTracking().ToList();
+            _ctx.State.Load();
+            return _ctx.Personal.ToList();
         }
 
-        public Person UpdatePerson(Person person)
+        public Person Save(Person person)
         {
-            _ctx.Entry(person).State = EntityState.Modified;
+            var person1 = _ctx.Personal.Single(p => p.Id == person.Id);
+            person1.Update(person);
             _ctx.SaveChanges();
-            return _ctx.Entry(person).Entity;
+            return person1;
         }
     }
 }

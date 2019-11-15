@@ -19,13 +19,13 @@ namespace PersonalEditor
         public MainWindowViewModel(Action listRefresh)
         {
             _ctx = new DbModelContainer();
-            Personal = new LocalPersonalCollection();
             var personalEFRepository = new PersonalEFRepository(_ctx);
-            LoadPersonalCommand = new LoadPersonalCommand(personalEFRepository, Personal);
             var postsEFRepository = new PostsEFRepository(_ctx);
+            Personal = new LocalPersonalCollection();            
+            LoadPersonalCommand = new LoadPersonalCommand(personalEFRepository, Personal);            
             AddEngineerCommand = new AddPersonCommand(new PersonFactoryWPF(new AddEngineerDialogFactory(postsEFRepository)), personalEFRepository, Personal);
             AddWorkerCommand = new AddPersonCommand(new PersonFactoryWPF(new AddWorkerDialogFactory(postsEFRepository)), personalEFRepository, Personal);
-            EditPersonCommand = new EditPersonCommand(_ctx,listRefresh);
+            EditPersonCommand = new EditPersonCommand(personalEFRepository,Personal,postsEFRepository);
             LoadPersonalCommand.Execute();
         }
         
@@ -38,23 +38,7 @@ namespace PersonalEditor
 
 
         public Person SelectedPerson { get; set; }       
-
-        //public void LoadPersonal()
-        //{
-        //    try
-        //    {
-
-        //        foreach (var person in _ctx.Personal.ToList())
-        //        {
-        //            Personal.Add(person);
-        //        }
-        //        var posts = _ctx.State.ToList();                
-        //    }
-        //    catch(Exception e)
-        //    {
-        //        throw new PersonalLoadingException("Ошибка загрузки списка персонала",e);
-        //    }
-        //}
+        
     }
 
     [Serializable]

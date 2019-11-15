@@ -78,6 +78,7 @@ foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
     }
 }
 #>
+		this.Configuration.ProxyCreationEnabled = false;
     }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)

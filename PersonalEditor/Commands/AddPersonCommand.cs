@@ -35,8 +35,8 @@ namespace PersonalEditor.Commands
             Person person;
             if(_personFactory.CreateInstanceResult(out person))
             {
-                _personalRepository.AddPerson(person);
-                _localPersonalCollection.Add(person);
+                var reloadedPerson = _personalRepository.AddPerson(person);
+                _localPersonalCollection.Add(reloadedPerson);
             }
 
             

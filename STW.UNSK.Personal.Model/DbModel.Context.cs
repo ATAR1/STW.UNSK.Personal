@@ -18,6 +18,7 @@ namespace STW.UNSK.Personal.Model
         public DbModelContainer()
             : base("name=DbModelContainer")
         {
+    		this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
